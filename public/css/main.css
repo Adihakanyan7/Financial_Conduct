@@ -1,0 +1,63 @@
+/* Reset body styles */
+body {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+/* Main content area */
+main {
+    padding: 1rem;
+}
+
+/* Header styling */
+.main-header {
+    width: 100%;
+    height: 3.5rem;
+    background-color: #dbc441;
+    padding: 0 1.5rem;
+}
+
+/* Navigation container inside header */
+.main-header__nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* Navigation list styling */
+.main-header__item-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Individual navigation items */
+.main-header__item {
+    margin: 0 1rem;
+    padding: 0;
+}
+
+/* Links inside navigation items */
+.main-header__item a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Link hover and active states */
+.main-header__item a:hover,
+.main-header__item a:active,
+.main-header__item a.active {
+    color: #3e00a1;
+}
+
+/* Form styling to align input and button horizontally */
+.form-control {
+    display: flex;
+    align-items: center;
+}
+
+.form-control input {
+    margin-right: 5px; /* Space between input and button */
+}
