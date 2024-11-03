@@ -1,10 +1,9 @@
 const path = require('path');
-
 const { urlencoded } = require('body-parser');
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const profilesRoutes = require('./routes/profiles').routes;
+const profilesRoutes = require('./routes/profiles');
 const user1Routes = require('./routes/user1');
 const user2Routes = require('./routes/user2');
 const sharedRoutes = require('./routes/shared');

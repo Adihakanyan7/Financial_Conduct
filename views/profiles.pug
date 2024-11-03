@@ -4,20 +4,20 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Profile Selection
-        link(rel="stylesheet", href="/css/main.css")
+        link(rel="stylesheet", href="/css/profiles.css")
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css")
     body 
-        h1 Select a Profile
-        ul
-            li
-                a(href="/user1")= user1Name
-                form(action="/update-names" method="POST")
-                input(type="text" name="user1Name" placeholder="Enter new name" value=user1Name)
-                button(type="submit") Rename User1
-            li
-                a(href="/user2")= user2Name
-                form(action="/update-names" method="POST")
-                input(type="text" name="user2Name" placeholder="Enter new name" value=user2Name)
-                button(type="submit") Rename User2
-            li
-                a(href="/shared") Shared
+        h1.page-title Select a Profile
+        ul.profile-list
+            li.profile-item
+                a.profile-link(href="/user1")= user1Name
+                form.profile-form(action="/update-names" method="POST")
+                    input.profile-input(type="text" name="user1Name" placeholder="Enter new name" value=user1Name)
+                    button.profile-button(type="submit") Rename User1
+            li.profile-item
+                a.profile-link(href="/user2")= user2Name
+                form.profile-form(action="/update-names" method="POST")
+                    input.profile-input(type="text" name="user2Name" placeholder="Enter new name" value=user2Name)
+                    button.profile-button(type="submit") Rename User2
+            li.profile-item
+                a.profile-link(href="/shared")= sharedName

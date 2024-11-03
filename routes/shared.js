@@ -1,20 +1,19 @@
-const path = require('path');
-
 const express = require('express');
+const { getUser1Name, getUser2Name, getProfilesName, getSharedName } = require('../util/data');
 
-const rootDir = require('../util/path');    
 
 const router = express.Router();
 
-router.get("/adi",(req, res, next) =>{
-    res.sendFile(path.join(rootDir, 'views', 'adi.html'));
+
+router.get("/",(req, res, next) =>{
+    res.render('shared', { 
+        user1Name: getUser1Name(),
+        user2Name: getUser2Name(),
+        profilesName: getProfilesName(),
+        sharedName: getSharedName() 
+    });
  });
 
-router.post("/adi",(req, res, next) =>{
-    const regularObject = { ...req.body }; // Convert to a regular object
-    console.log(regularObject);
-    res.redirect('/adi');
-});
 
 
 module.exports = router;
