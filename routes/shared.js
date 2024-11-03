@@ -10,7 +10,8 @@ router.get("/",(req, res, next) =>{
         user1Name: getUser1Name(),
         user2Name: getUser2Name(),
         profilesName: getProfilesName(),
-        sharedName: getSharedName() 
+        sharedName: getSharedName(),
+        path: '/shared'
     });
  });
 
