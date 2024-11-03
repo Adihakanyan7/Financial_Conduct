@@ -3,6 +3,7 @@ const { urlencoded } = require('body-parser');
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const { getProfilesName } = require('./util/data');
 const profilesRoutes = require('./routes/profiles');
 const user1Routes = require('./routes/user1');
 const user2Routes = require('./routes/user2');
@@ -25,7 +26,7 @@ app.use('/', profilesRoutes); // Mounting profilesRoutes as the root route
 
 
 app.use((req, res, next) =>{
-    res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
+    res.status(404).render('404', {profilesName: getProfilesName()});
 });
 
 
