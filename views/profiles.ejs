@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Profile Selection</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/profiles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  </head>
+  <body>
+
+
+    <main>
+      <h1 class="page-title">Select a Profile</h1>
+      <ul class="profile-list">
+        <li class="profile-item">
+          <a href="/user1" class="profile-link"><%= user1Name %></a>
+          <form action="/update-names" method="POST" class="profile-form">
+            <input type="text" name="user1Name" placeholder="Enter new name" value="<%= user1Name %>" class="profile-input">
+            <button type="submit" class="profile-button">Rename User1</button>
+          </form>
+        </li>
+        <li class="profile-item">
+          <a href="/user2" class="profile-link"><%= user2Name %></a>
+          <form action="/update-names" method="POST" class="profile-form">
+            <input type="text" name="user2Name" placeholder="Enter new name" value="<%= user2Name %>" class="profile-input">
+            <button type="submit" class="profile-button">Rename User2</button>
+          </form>
+        </li>
+        <li class="profile-item">
+          <a href="/shared" class="profile-link"><%= sharedName %></a>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>

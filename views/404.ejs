@@ -1,0 +1,16 @@
+<!-- Include head content with a title for the 404 page -->
+<%- include('includes/head', { title: 'Page Not Found' }) %>
+</head>
+
+<body>
+<!-- Include the navigation bar -->
+<%- include('includes/nav', { profilesName: profilesName, user1Name: user1Name, user2Name: user2Name, sharedName: sharedName, path: '/404' }) %>
+
+<!-- Main content for 404 page -->
+<main>
+    <h1>Page Not Found!</h1>
+</main>
+
+<!-- Include end scripts or footer content -->
+<%- include('includes/end') %>
+

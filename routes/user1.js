@@ -1,5 +1,5 @@
 const express = require('express');
-const { getUser1Name, getUser2Name, getProfilesName, getSharedName } = require('../util/data');
+const { getUser1Name, getUser2Name, getProfilesName, getSharedName, getPathUser1 } = require('../util/data');
 
 
 const router = express.Router();
@@ -11,7 +11,7 @@ router.get("/",(req, res, next) =>{
         user2Name: getUser2Name(),
         profilesName: getProfilesName(),
         sharedName: getSharedName(),
-        path: '/user1'
+        path: getPathUser1()
     });
  });
 

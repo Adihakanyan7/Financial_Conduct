@@ -3,7 +3,7 @@ const { urlencoded } = require('body-parser');
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const { getProfilesName } = require('./util/data');
+const { getUser1Name, getUser2Name, getProfilesName, getSharedName, getPath404 } = require('./util/data');
 const profilesRoutes = require('./routes/profiles');
 const user1Routes = require('./routes/user1');
 const user2Routes = require('./routes/user2');
@@ -11,7 +11,7 @@ const sharedRoutes = require('./routes/shared');
 
 const app = express();
 
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 
@@ -26,7 +26,13 @@ app.use('/', profilesRoutes); // Mounting profilesRoutes as the root route
 
 
 app.use((req, res, next) =>{
-    res.status(404).render('404', {profilesName: getProfilesName()});
+    res.status(404).render('404', {
+        user1Name: getUser1Name(),
+        user2Name: getUser2Name(),
+        profilesName: getProfilesName(),
+        sharedName: getSharedName(),
+        path: getPath404()
+    });
 });
 
 

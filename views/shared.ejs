@@ -1,0 +1,17 @@
+<!-- Include head content with a specific title for User1 -->
+<%- include('includes/head', { title: 'Shared' }) %>
+</head>
+
+  <body>
+    <!-- Include the navigation bar with appropriate paths and user names -->
+    <%- include('includes/nav', { profilesName: profilesName, user1Name: user1Name, user2Name: user2Name, sharedName: sharedName, path: path }) %>
+
+    <!-- Main content for User1 page -->
+    <main>
+      <h1>My Finance</h1>
+      <p>List of all the Finance...</p>
+    </main>
+
+<!-- Include end scripts or footer content -->
+<%- include('includes/end') %>
+ 
