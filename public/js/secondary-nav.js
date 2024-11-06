@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Automatically show the correct dropdown on page load
     const path = window.location.pathname;
     let dropdownId = '';
+    const mainHeader = document.getElementById("main-header");
 
     if (path === '/users/user1') {
         dropdownId = 'user1Dropdown';
@@ -13,7 +14,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (dropdownId) {
         const dropdown = document.getElementById(dropdownId);
-        dropdown.style.display = 'block'; // Show the dropdown by default based on page path
+        dropdown.classList.add("visible"); // Make visible on page load
+        mainHeader.style.paddingBottom = '30px';
+        /*
+        dropdown.style.display = 'flex'; 
+        dropdown.style.opacity = '1';
+        mainHeader.style.paddingBottom = '30px';
+        */
     }
 
     // Add toggle functionality for each user link
@@ -25,8 +32,16 @@ document.addEventListener("DOMContentLoaded", function() {
             if (targetPath === path) {
                 event.preventDefault(); // Prevent navigation
                 const dropdown = document.getElementById(dropdownId);
-                dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+                mainHeader.style.paddingBottom = (dropdown.classList.contains("visible")) ? '0px' : '30px';
+                dropdown.classList.toggle("visible"); // Toggle visibility with class
+                /*
+                mainHeader.style.paddingBottom = (dropdown.style.display === 'flex') ? '0px' : '30px';
+                dropdown.style.opacity = (dropdown.style.display === 'flex') ? '0' : '1';
+                dropdown.style.display = (dropdown.style.display === 'flex') ? 'none' : 'flex';
+                */
             }
         });
     });
 });
+
+
