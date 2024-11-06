@@ -16,21 +16,21 @@
       <h1 class="page-title">Select a Profile</h1>
       <ul class="profile-list">
         <li class="profile-item">
-          <a href="/user1" class="profile-link"><%= user1Name %></a>
+          <a href="/users/user1" class="profile-link"><%= user1Name %></a>
           <form action="/update-names" method="POST" class="profile-form">
             <input type="text" name="user1Name" placeholder="Enter new name" value="<%= user1Name %>" class="profile-input">
             <button type="submit" class="profile-button">Rename User1</button>
           </form>
         </li>
         <li class="profile-item">
-          <a href="/user2" class="profile-link"><%= user2Name %></a>
+          <a href="/users/user2" class="profile-link"><%= user2Name %></a>
           <form action="/update-names" method="POST" class="profile-form">
             <input type="text" name="user2Name" placeholder="Enter new name" value="<%= user2Name %>" class="profile-input">
             <button type="submit" class="profile-button">Rename User2</button>
           </form>
         </li>
         <li class="profile-item">
-          <a href="/shared" class="profile-link"><%= sharedName %></a>
+          <a href="/users/shared" class="profile-link"><%= sharedName %></a>
         </li>
       </ul>
     </main>

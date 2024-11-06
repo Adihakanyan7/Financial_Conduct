@@ -2,18 +2,20 @@ module.exports = class User {
     
     username = 'DefaultUser';
     viewPath = '/';
-    active = '';
+    userPath = '';
+    
 
-    constructor(username, viewPath, active) {
+    constructor(username, viewPath, userPath) {
         if (username) {
             this.username = username;
         }
         if (viewPath) {
             this.viewPath = viewPath;
         }
-        if (active) {
-            this.active = active
+        if (userPath) {
+            this.userPath = userPath;
         }
+        
     }
 
     getUsername() {
@@ -32,12 +34,12 @@ module.exports = class User {
         this.viewPath = viewPath;
     }
 
-    getActive() {
-        return this.active;
+    getUserPath() {
+        return this.userPath;
     }
     
-    setActive(active) {
-        this.Active = active;
+    setUserPath(userPath) {
+        this.userPath = userPath;
     }
     
 }

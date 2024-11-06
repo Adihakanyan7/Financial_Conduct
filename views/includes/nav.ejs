@@ -1,17 +1,43 @@
+<script src="/js/secondary-nav.js" defer></script>
+
 <header class="main-header">
     <nav class="main-header__nav">
       <ul class="main-header__item-list">
         <li class="main-header__item">
-          <a href="/" class="<%= path === '/' ? 'active' : '' %>"><%= profilesName %></a>
+          <a href="/"><%= profilesName %></a>
         </li>
         <li class="main-header__item">
-          <a href="/users/user1" class="<%= path === '/user1' ? 'active' : '' %>"><%= user1Name %></a>
+          <a href="/users/user1" class="<%= path === userPaths['user1Path'] ? 'active' : '' %>">
+            <%= user1Name %>
+          </a>
+          <ul id="user1Dropdown" class="secondary-nav">
+            <li>Expenses</li>
+            <li>Variable Expenses</li>
+            <li>Current Expenses</li>
+            <li>Fixed Expenses</li>
+          </ul>
         </li>
         <li class="main-header__item">
-          <a href="/users/user2" class="<%= path === '/user2' ? 'active' : '' %>"><%= user2Name %></a>
+          <a href="/users/user2" class="<%= path === userPaths['user2Path'] ? 'active' : '' %>">
+            <%= user2Name %>
+          </a>
+          <ul id="user2Dropdown" class="secondary-nav">
+            <li>Expenses</li>
+            <li>Variable Expenses</li>
+            <li>Current Expenses</li>
+            <li>Fixed Expenses</li>
+          </ul>
         </li>
         <li class="main-header__item">
-          <a href="/users/shared" class="<%= path === '/shared' ? 'active' : '' %>"><%= sharedName %></a>
+          <a href="/users/shared" class="<%= path === userPaths['sharedPath'] ? 'active' : '' %>">
+            <%= sharedName %>
+          </a>
+          <ul id="sharedDropdown" class="secondary-nav">
+            <li>Expenses</li>
+            <li>Variable Expenses</li>
+            <li>Current Expenses</li>
+            <li>Fixed Expenses</li>
+          </ul>
         </li>
       </ul>
     </nav>
