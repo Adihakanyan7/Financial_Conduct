@@ -1,10 +1,11 @@
 /* The best so far*/
 .secondary-nav {
 display: flex;      
+flex-direction: row;
 visibility: hidden;       
 position: absolute;       
 top: 120%;               
-left: -0.3rem;        
+left: 0.6rem;        
 gap: 5px;
 list-style-type: none;
 padding: 0;

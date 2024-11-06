@@ -29,6 +29,7 @@ main {
 
 /* Navigation list styling */
 .main-header__item-list {
+    position: relative;
     list-style: none;
     align-items: center;
     margin: 0;
@@ -38,7 +39,6 @@ main {
 
 /* Individual navigation items */
 .main-header__item {
-    position: relative; /* Parent item relative positioning */
     margin: 0 1rem;
     padding: 0;
 }
@@ -67,3 +67,12 @@ main {
 }
 
 
+.highlighted {
+    background-color: rgba(62, 42, 212, 0.2); /* Lighter, semi-transparent purple background */
+    color: #3e2ad4;               /* Match color to the background for subtle contrast */
+    font-weight: normal;          /* Remove bold to reduce emphasis */
+    padding: 0.1rem 0.7rem;       /* Less padding */
+    border-radius: 3px;           /* Slightly smaller rounded corners */
+    transition: background-color 0.3s ease; /* Add a transition for a smooth highlight effect */
+    border-radius: 10px;
+}

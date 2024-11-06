@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Automatically show the correct dropdown on page load
     const path = window.location.pathname;
+    console.log(path);
     let dropdownId = '';
     const mainHeader = document.getElementById("main-header");
 
@@ -14,13 +15,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (dropdownId) {
         const dropdown = document.getElementById(dropdownId);
-        dropdown.classList.add("visible"); // Make visible on page load
+        dropdown.classList.add("visible"); 
         mainHeader.style.paddingBottom = '30px';
-        /*
-        dropdown.style.display = 'flex'; 
-        dropdown.style.opacity = '1';
-        mainHeader.style.paddingBottom = '30px';
-        */
     }
 
     // Add toggle functionality for each user link
