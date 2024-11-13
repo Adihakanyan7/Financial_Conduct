@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link rel="stylesheet" href="/test/css/test.css">
+</head>
+<body>
+    <div class="table-container">
+        <table id="myTable">
+            <tr>
+                <th>Data 1</th>
+                <th>Data 2</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td class="displaying">Example Data 1</td>
+                <td class="displaying">Example Data 2</td>
+                <td><button class="edit-btn" onclick="editRow(this)">Edit</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function editRow(button) {
+            // Get the row containing the clicked button
+            const row = button.parentElement.parentElement;
+            
+            // Find all cells with class 'displaying' in this row
+            const editableCells = row.querySelectorAll('.displaying');
+        
+            // Loop through each cell and replace its content with an input
+            editableCells.forEach(cell => {
+                const currentValue = cell.textContent;  // Save the current text
+                cell.innerHTML = `<input type="text" value="${currentValue}">`;  // Replace with input
+                cell.classList.add('editing');          // Add editing class to cell
+                cell.classList.remove('displaying');     // Remove displaying class
+            });
+        
+            // Change the button to a "Save" button
+            button.textContent = 'Save';
+            button.onclick = () => saveRow(button);
+        }
+        
+        function saveRow(button) {
+            // Get the row containing the clicked button
+            const row = button.parentElement.parentElement;
+        
+            // Find all input elements in the row
+            const inputs = row.querySelectorAll('.editing input');  // Adjusted to find inputs within editing cells
+        
+            // Loop through each input, replace its input field with the value as text
+            inputs.forEach(input => {
+                const cell = input.parentElement;  // Get the parent cell (td)
+                cell.textContent = input.value;    // Set cell text to the input value
+                cell.classList.add('displaying');  // Re-add displaying class
+                cell.classList.remove('editing');  // Remove editing class
+            });
+        
+            // Change the button back to an "Edit" button
+            button.textContent = 'Edit';
+            button.onclick = () => editRow(button);
+        }
+    </script>
+</body>
+</html>

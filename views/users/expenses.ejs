@@ -1,0 +1,66 @@
+<%- include('../includes/head', { title: 'Expenses' }) %>
+<link rel="stylesheet" href="/css/expenses.css">
+</head>
+
+  <body>
+    <%- include('../includes/nav', { profilesName: profilesName, user1Name: user1Name, user2Name: user2Name, sharedName: sharedName, path: path }) %>
+
+    <main>
+        <div class="table-container">
+            <table id="myTable">
+                <tr id="expensesTable" class="<%= user.expenses.length > 0 ? '' : 'hidden' %>">
+                    <th>Date</th>
+                    <th>Product</th>
+                    <th>Payment Place</th>
+                    <th>Amount</th>
+                    <th>Description</th>
+                </tr>
+                
+                    <% user.expenses.forEach(expense => { %>
+                        <tr id="expense-<%= expense.id %>">       
+                            <form action="/users/<%= user.id %>/expenses/edit/<%= expense.id %>" method="POST" onsubmit="return confirmEdit(this)">
+                                <td>
+                                    <span class="display-only"><%= expense.date %></span>
+                                    <input class="edit-only" type="date" name="date" value="<%= expense.date %>" style="display:none;">
+                                </td>
+                                <td>
+                                    <span class="display-only"><%= expense.product %></span>
+                                    <input class="edit-only" type="text" name="product" value="<%= expense.product %>" style="display:none;"></td>
+                                <td>
+                                    <span class="display-only"><%= expense.paymentPlace %></span>
+                                    <input class="edit-only" type="text" name="paymentPlace" value="<%= expense.paymentPlace %>" style="display:none;"></td>
+                                <td>
+                                    <span class="display-only"><%= expense.amount %></span>
+                                    <input class="edit-only" type="number" name="amount" value="<%= expense.amount %>" style="display:none;"></td>
+                                <td>
+                                    <span class="display-only"><%= expense.description %></span>
+                                    <input class="edit-only" type="text" name="description" value="<%= expense.description %>" style="display:none;"></td>
+                                <td>
+                                    <button type="button" onclick="toggleEditMode(this)">Edit</button>
+                                    <button type="submit" class="edit-only" style="display:none;">Save</button></td>
+                            </form> 
+                            <form action="/users/<%= user.id %>/expenses/delete/<%= expense.id %>" method="POST">
+                                <td><button type="submit">Delete</button></td>
+                            </form>
+                        </tr>
+                    <% }) %>           
+                
+
+                <tr>
+                    <form action="/users/<%= user.id %>/expenses/add" method="POST">
+                        <td><input type="text" name="date" value="10.10.2024" required></td>
+                        <td><input type="text" name="product" placeholder="Product" value="Book" ></td>
+                        <td><input type="text" name="paymentPlace" placeholder="Payment Place" value="BookLend" ></td>
+                        <td><input type="text" name="amount" placeholder="Amount" value="10" ></td>
+                        <td><input type="text" name="description" placeholder="Description" value="My First Book" ></td>
+                        <td><button type="submit">Add Expense</button></td>
+                    </form>
+                </tr>
+            </table>
+        </div>
+    </main>
+
+    <script src="/js/expenses.js"></script>
+    <%- include('../includes/end') %>
+     
+
