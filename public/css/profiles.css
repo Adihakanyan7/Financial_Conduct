@@ -1,11 +1,22 @@
 /* Profile Selection Page Styles */
 
+/* Center the entire page content */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
 /* Title Styling */
 .page-title {
-    font-size: 2rem;
+    font-size: 2.5rem; /* Increase title size */
     font-weight: bold;
     color: #333;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     text-align: center;
 }
 
@@ -13,7 +24,7 @@
 .profile-list {
     list-style-type: none;
     padding: 0;
-    max-width: 600px;
+    max-width: 700px; /* Slightly larger width */
     margin: 0 auto;
 }
 
@@ -22,17 +33,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    border-bottom: 1px solid #ccc;
+    margin-bottom: 1.5rem; /* Increase spacing between items */
+    padding: 1rem;
+    border-bottom: 2px solid #ccc; /* Thicker border */
 }
 
 /* Profile Link */
 .profile-link {
-    font-size: 1.25rem;
+    font-size: 1.5rem; /* Increase link font size */
     color: #5a5aed;
     text-decoration: none;
     font-weight: bold;
+    margin-right: 1rem; /* Add space between username and button */
 }
 
 .profile-link:hover {
@@ -47,21 +59,22 @@
 
 /* Input and Button Styles */
 .profile-input {
-    padding: 0.5rem;
-    margin-right: 0.5rem;
+    padding: 0.75rem; /* Increase padding for input */
+    margin-right: 0.75rem;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 1rem;
+    font-size: 1.25rem; /* Increase input font size */
 }
 
 .profile-button {
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1.5rem; /* Larger button padding */
     background-color: #5a5aed;
     color: #fff;
     border: none;
     border-radius: 4px;
-    font-size: 1rem;
+    font-size: 1.25rem; /* Increase button font size */
     cursor: pointer;
+    margin-left: auto; /* Align the button to the right */
 }
 
 .profile-button:hover {

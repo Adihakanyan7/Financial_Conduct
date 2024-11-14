@@ -8,17 +8,17 @@
     <main>
         <div class="table-container">
             <table id="myTable">
-                <tr id="expensesTable" class="<%= user.expenses.length > 0 ? '' : 'hidden' %>">
+                <tr id="expensesTable" class="<%= expenses.length > 0 ? '' : 'hidden' %>">
                     <th>Date</th>
                     <th>Product</th>
                     <th>Payment Place</th>
                     <th>Amount</th>
                     <th>Description</th>
                 </tr>
-                
-                    <% user.expenses.forEach(expense => { %>
+                    <h1><%= type.charAt(0).toUpperCase() + type.slice(1) %> Expenses</h1>
+                    <% expenses.forEach(expense => { %>
                         <tr id="expense-<%= expense.id %>">       
-                            <form action="/users/<%= user.id %>/expenses/edit/<%= expense.id %>" method="POST" onsubmit="return confirmEdit(this)">
+                            <form action="/users/<%= user.id %>/expenses/<%= type %>/edit/<%= expense.id %>" method="POST" >
                                 <td>
                                     <span class="display-only"><%= expense.date %></span>
                                     <input class="edit-only" type="date" name="date" value="<%= expense.date %>" style="display:none;">
@@ -36,10 +36,15 @@
                                     <span class="display-only"><%= expense.description %></span>
                                     <input class="edit-only" type="text" name="description" value="<%= expense.description %>" style="display:none;"></td>
                                 <td>
-                                    <button type="button" onclick="toggleEditMode(this)">Edit</button>
-                                    <button type="submit" class="edit-only" style="display:none;">Save</button></td>
+                                    <button type="button" onclick="toggleEditMode(this)">
+                                        Edit
+                                    </button>
+                                    <button type="submit" class="edit-only" style="display:none;">
+                                        Save
+                                    </button>
+                                </td>
                             </form> 
-                            <form action="/users/<%= user.id %>/expenses/delete/<%= expense.id %>" method="POST">
+                            <form action="/users/<%= user.id %>/expenses/<%= type %>/delete/<%= expense.id %>" method="POST">
                                 <td><button type="submit">Delete</button></td>
                             </form>
                         </tr>
@@ -47,7 +52,7 @@
                 
 
                 <tr>
-                    <form action="/users/<%= user.id %>/expenses/add" method="POST">
+                    <form action="/users/<%= user.id %>/expenses/<%= type %>/add" method="POST">
                         <td><input type="text" name="date" value="10.10.2024" required></td>
                         <td><input type="text" name="product" placeholder="Product" value="Book" ></td>
                         <td><input type="text" name="paymentPlace" placeholder="Payment Place" value="BookLend" ></td>

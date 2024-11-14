@@ -23,10 +23,10 @@ exports.getUserPage = (req, res, next) => {
 };
 
 // Get expenses page
-exports.getExpensesPage = (req, res) => {
-    const { userId } = req.params;
+exports.getExpensesPage = (userId, type, req, res) => {
     const user = User.getUser(userId);
     if (user) {
+        const expenses = user[`${type}Expenses`] || [];
         res.render('users/expenses', { 
             user: user,
             user1Name: user1.getUsername(),
@@ -35,6 +35,8 @@ exports.getExpensesPage = (req, res) => {
             profilesName: profiles.getProfilesName(),
             userPaths: userPaths,
             path: user.getUserPath(), 
+            type,
+            expenses,
         });
     } else {
         res.status(404).send('User not found');
@@ -42,41 +44,40 @@ exports.getExpensesPage = (req, res) => {
 };
 
 // Add expense
-exports.addExpense = (req, res, next) => {
-    const { userId } = req.params;
+exports.addExpense = (userId, type, req, res, next) => {
     const { date, product, paymentPlace, amount, description } = req.body;
     const user = User.getUser(userId);
     if (user) {
-        user.addExpense(date, product, paymentPlace, amount, description);
-        res.redirect(`/users/${userId}/expenses`); // Redirect to expenses page
+        user.addExpense(type, date, product, paymentPlace, amount, description);
+        res.redirect(`/users/${userId}/expenses/${type}`); // Redirect to expenses page
     } else {
         res.status(404).send('User not found');
     }
 };
 
 // Delete expense
-exports.deleteExpense = (req, res) => {
-    const { userId, expenseId } = req.params;
-
+exports.deleteExpense = (userId, type, req, res) => {
+    console.log('Controllers -> users.js -> deleteExpense : hit !!')
+    const { expenseId } = req.params;
     const user = User.getUser(userId);
     if (user) {
-        user.deleteExpense(expenseId.toString());
-        res.redirect(`/users/${userId}/expenses`); // Redirect to expenses page
+        user.deleteExpense(type, expenseId.toString());
+        res.redirect(`/users/${userId}/expenses/${type}`); // Redirect to expenses page
     } else {
         res.status(404).send('User not found');
     }
 };
 
 // Modify expense
-exports.editExpense = (req, res) => {
-    const { userId, expenseId } = req.params;
+exports.editExpense = (userId, type, req, res) => {
+    const { expenseId } = req.params;
     const { date, product, paymentPlace, amount, description } = req.body;
     //console.log(req.body);
     //console.log("controllers -> user.js -> editExpense -> req.params[userId, expenseId], req.body[date, product, paymentPlace, amount, description]", req.params, req.body)
     const user = User.getUser(userId);
     if (user) {
-        user.editExpense(expenseId.toString(), date, product, paymentPlace, amount, description);
-        res.redirect(`/users/${userId}/expenses`); // Redirect to expenses page
+        user.editExpense(type, expenseId.toString(), date, product, paymentPlace, amount, description);
+        res.redirect(`/users/${userId}/expenses/${type}`); // Redirect to expenses page
     } else {
         res.status(404).send('User not found');
     }

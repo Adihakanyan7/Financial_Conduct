@@ -16,23 +16,30 @@
       <h1 class="page-title">Select a Profile</h1>
       <ul class="profile-list">
         <li class="profile-item">
-          <a href="/users/user1" class="profile-link"><%= user1Name %></a>
-          <form action="/update-names" method="POST" class="profile-form">
-            <input type="text" name="user1Name" placeholder="Enter new name" value="<%= user1Name %>" class="profile-input">
-            <button type="submit" class="profile-button">Rename User1</button>
-          </form>
-        </li>
-        <li class="profile-item">
-          <a href="/users/user2" class="profile-link"><%= user2Name %></a>
-          <form action="/update-names" method="POST" class="profile-form">
-            <input type="text" name="user2Name" placeholder="Enter new name" value="<%= user2Name %>" class="profile-input">
-            <button type="submit" class="profile-button">Rename User2</button>
-          </form>
-        </li>
-        <li class="profile-item">
           <a href="/users/shared" class="profile-link"><%= sharedName %></a>
         </li>
+        <li class="profile-item">
+          <form action="/user1/edit-username" method="POST" onsubmit="return confirmUsernameEdit(this, 'user1')" class="profile-form">
+              <a href="/users/user1" id="user1-link" class="profile-link">
+                  <span id="user1-display" class="display-only"><%= user1Name %></span>
+              </a>
+              <input id="user1-input" class="profile-input edit-only" type="text" name="username" value="<%= user1Name %>" style="display:none;">
+              <button type="button" id="user1-edit-button" class="profile-button" onclick="toggleEditUsername('user1')">Edit</button>
+              <button type="submit" id="user1-save-button" class="profile-button edit-only" style="display:none;">Save</button>
+          </form>
+      </li>
+      <li class="profile-item">
+          <form action="/user2/edit-username" method="POST" onsubmit="return confirmUsernameEdit(this, 'user2')" class="profile-form">
+              <a href="/users/user2" id="user2-link" class="profile-link">
+                  <span id="user2-display" class="display-only"><%= user2Name %></span>
+              </a>
+              <input id="user2-input" class="profile-input edit-only" type="text" name="username" value="<%= user2Name %>" style="display:none;">
+              <button type="button" id="user2-edit-button" class="profile-button" onclick="toggleEditUsername('user2')">Edit</button>
+              <button type="submit" id="user2-save-button" class="profile-button edit-only" style="display:none;">Save</button>
+          </form>
+      </li>
       </ul>
     </main>
+    <script src="/js/profiles.js"></script>
   </body>
 </html>
